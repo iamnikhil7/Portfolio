@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bajra Work</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Dark animated background */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(-45deg, #000000, #111111, #1a1a1a, #0d0d0d);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: white;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      margin-bottom: 50px;
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: #00ffe0;
+      text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0;
+      animation: fadeInDown 1.2s ease;
+    }
+
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .btn-link {
+      padding: 15px 35px;
+      border: none;
+      border-radius: 30px;
+      background: transparent;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+      box-shadow: 0 0 10px rgba(0,255,224,0.5), 0 0 20px rgba(0,255,224,0.2);
+      border: 2px solid #00ffe0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-link::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(0,255,224,0.3), transparent);
+      transition: all 0.5s;
+    }
+
+    .btn-link:hover::before {
+      left: 100%;
+    }
+
+    .btn-link:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 0 20px #00ffe0, 0 0 40px #00ffe0;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating glowing particles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(0,255,224,0.7);
+      box-shadow: 0 0 15px rgba(0,255,224,0.7);
+      animation: float 10s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-100px) scale(1.3); opacity: 0.4; }
+      100% { transform: translateY(0) scale(1); opacity: 0.8; }
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;   /* FIX: hidden by default */
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: #111;
+      padding: 30px;
+      border-radius: 15px;
+      color: #fff;
+      text-align: center;
+      width: 400px;
+      box-shadow: 0 0 20px #00ffe0;
+      animation: fadeInUp 0.6s ease;
+      position: relative;
+    }
+
+    .modal-content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .modal-content li {
+      margin: 12px 0;
+    }
+
+    .modal-content a {
+      color: #00ffe0;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .modal-content a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px; right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .close:hover {
+      color: #00ffe0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bajra Project Resources</h1>
+  
+  <div class="button-container">
+    <a href="https://drive.google.com/file/d/1xgh9YHtUOr76zgUz0vKOTUpcAT2n-dll/view?usp=sharing" class="btn-link">Bajra Portfolio</a>
+    <a href="https://drive.google.com/file/d/1seuMEZSKDwsbISBfz6-5mUClQFnLFkiX/view?usp=sharing" class="btn-link">Project Charter Document</a>
+    <a href="https://drive.google.com/file/d/1eiHwXIVoe7zMXLNql1JXEDrI2ChNeDcW/view?usp=sharing" target="_blank" class="btn-link">Bizos Solutions</a>
+    <a href="https://drive.google.com/file/d/1sld0KH0B9H1nE1ZOIflgablrVqXjPolT/view?usp=sharing" class="btn-link">Project Management Traineeship Documents</a>
+    <!-- Button that opens modal -->
+    <a href="#" class="btn-link" onclick="openModal()">Presentation Slides</a>
+  </div>
+
+  <!-- Modal for Presentation Slides -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Presentation Slides</h2>
+      <ul>
+        <li><a href="https://drive.google.com/file/d/1Gb9GekIUhqoMwmZQqnU6Ie3DyLqe6Jb_/view?usp=sharing" target="_blank">Week 1 Presentation</a></li>
+        <li><a href="https://drive.google.com/file/d/157ITqT2XO4uPEOYcUn1zWkaeCjCe75xT/view?usp=sharing" target="_blank">Week 2 Presentation</a></li>
+        <li><a href="https://drive.google.com/file/d/1r3lsovi4AYB8Tg4ybQVNr1jE9YaKlZHN/view?usp=sharing" target="_blank">Week 3 Presentation</a></li>
+        <li><a href="https://drive.google.com/file/d/18_63mHRUG5xxZQzxXuPGgBXBewVjqDRt/view?usp=sharing" target="_blank">Week 4 Presentation</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Glowing floating particles -->
+  <div class="particle" style="width:15px; height:15px; left:20%; top:70%; animation-delay:0s;"></div>
+  <div class="particle" style="width:8px; height:8px; left:40%; top:50%; animation-delay:2s;"></div>
+  <div class="particle" style="width:12px; height:12px; left:60%; top:80%; animation-delay:4s;"></div>
+  <div class="particle" style="width:20px; height:20px; left:80%; top:40%; animation-delay:6s;"></div>
+  <div class="particle" style="width:10px; height:10px; left:30%; top:30%; animation-delay:8s;"></div>
+
+  <script>
+    function openModal() {
+      document.getElementById("modal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
