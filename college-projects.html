@@ -4,7 +4,249 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>College Project Reports - Nikhil Khanal</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    :root {
+      --accent: #ffbd39;
+      --accent-soft: #ffda85;
+      --ink-0: #ffffff;
+      --ink-1: rgba(255, 255, 255, 0.88);
+      --ink-2: rgba(255, 255, 255, 0.62);
+      --ink-3: rgba(255, 255, 255, 0.38);
+      --surface-0: #0b0d10;
+      --surface-1: rgba(255, 255, 255, 0.04);
+      --surface-2: rgba(255, 255, 255, 0.07);
+      --line: rgba(255, 255, 255, 0.08);
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(1200px 600px at 15% -10%, rgba(255,189,57,0.10), transparent 60%),
+                  radial-gradient(900px 500px at 90% 110%, rgba(0,180,255,0.07), transparent 60%),
+                  var(--surface-0);
+      color: var(--ink-1);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection { background: rgba(255, 189, 57, 0.35); color: #fff; }
+
+    /* Navbar */
+    .ftco_navbar {
+      padding: 18px 0;
+      background: rgba(11, 13, 16, 0.78) !important;
+      backdrop-filter: saturate(160%) blur(14px);
+      -webkit-backdrop-filter: saturate(160%) blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+    .navbar-nav .nav-link {
+      color: var(--ink-1) !important;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      padding: 8px 16px !important;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover { color: var(--accent) !important; }
+
+    /* Hero header */
+    .projects-hero {
+      padding: 130px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .projects-hero .eyebrow {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      background: rgba(255, 189, 57, 0.10);
+      color: var(--accent);
+      border: 1px solid rgba(255, 189, 57, 0.25);
+      margin-bottom: 1.2rem;
+    }
+
+    .projects-hero h1 {
+      font-size: clamp(2rem, 4.2vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 1rem;
+      color: var(--ink-0);
+    }
+
+    .projects-hero h1 span {
+      background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .projects-hero p {
+      font-size: 1rem;
+      color: var(--ink-2);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Project grid */
+    .projects-grid {
+      padding: 30px 0 100px;
+    }
+
+    .report-card {
+      display: flex;
+      flex-direction: column;
+      padding: 28px 26px;
+      background: var(--surface-1);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      height: 100%;
+      text-decoration: none !important;
+      color: inherit;
+      transition: transform 0.4s var(--ease),
+                  box-shadow 0.4s var(--ease),
+                  border-color 0.4s var(--ease),
+                  background 0.4s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .report-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(420px 180px at 0% 0%, rgba(255,189,57,0.10), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
+    }
+
+    .report-card:hover {
+      transform: translateY(-6px);
+      background: var(--surface-2);
+      border-color: rgba(255, 189, 57, 0.30);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35), 0 0 24px rgba(255, 189, 57, 0.10);
+    }
+
+    .report-card:hover::before { opacity: 1; }
+
+    .report-card .icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(255, 189, 57, 0.12);
+      border: 1px solid rgba(255, 189, 57, 0.25);
+      color: var(--accent);
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .report-card .icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .report-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink-0);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .report-card p {
+      color: var(--ink-2);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .report-card .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      position: relative;
+      z-index: 1;
+    }
+
+    .report-card .cta svg {
+      width: 14px; height: 14px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      fill: none;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .report-card:hover .cta svg { transform: translateX(4px); }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink-2);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-top: 2.5rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+      transform: translateX(-3px);
+    }
+
+    /* Footer */
+    footer.site-footer {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--line);
+      background: #0a0c0f;
+      text-align: center;
+      color: var(--ink-3);
+      font-size: 13px;
+      letter-spacing: 0.6px;
+    }
+
+    @media (max-width: 768px) {
+      .projects-hero { padding: 110px 0 40px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -25,24 +267,78 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="ftco-section ftco-no-pb">
-    <div class="container text-center">
-      <h1>College Project Reports</h1>
-      <p>Click the buttons below to view specific reports.</p>
-      <div class="mt-4">
-        <a href="https://drive.google.com/file/d/1ia8N8V1ZcV8N8bFAUh6s48jk7F4y7sj3/view?usp=sharing" target="_blank" class="btn btn-primary py-3 px-5 mb-2">Internship Report</a><br>
-        <a href="https://drive.google.com/file/d/1p7upLc4NJDzj5riDFD_7O9iXuZo0KkWw/view?usp=sharing" target="_blank" class="btn btn-primary py-3 px-5 mb-2">Doctor Appointment Report</a><br>
-        <a href="https://drive.google.com/file/d/1SwbCPyXECSsvLefAOaGJ48Bg4MPLB0-N/view?usp=sharing" target="_blank" class="btn btn-primary py-3 px-5 mb-2">Summer Project Presentation</a>
+  <!-- Hero -->
+  <section class="projects-hero">
+    <div class="container">
+      <span class="eyebrow">Academic Work</span>
+      <h1>College <span>Project Reports</span></h1>
+      <p>A curated collection of academic reports and presentations from my undergraduate journey in Information Management.</p>
+    </div>
+  </section>
+
+  <!-- Project Grid -->
+  <section class="projects-grid">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <a class="report-card" href="https://drive.google.com/file/d/1ia8N8V1ZcV8N8bFAUh6s48jk7F4y7sj3/view?usp=sharing" target="_blank" rel="noopener">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3>Internship Report</h3>
+            <p>A detailed report documenting my internship experience, responsibilities, and key learnings across the engagement.</p>
+            <span class="cta">View Report
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <a class="report-card" href="https://drive.google.com/file/d/1p7upLc4NJDzj5riDFD_7O9iXuZo0KkWw/view?usp=sharing" target="_blank" rel="noopener">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3>Doctor Appointment Report</h3>
+            <p>Full technical report on the Doctor Appointment Management System prototype built for Sukraraj Tropical Hospital.</p>
+            <span class="cta">View Report
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <a class="report-card" href="https://drive.google.com/file/d/1SwbCPyXECSsvLefAOaGJ48Bg4MPLB0-N/view?usp=sharing" target="_blank" rel="noopener">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>Summer Project Presentation</h3>
+            <p>Presentation slides summarizing the summer project scope, methodology, outcomes, and reflections.</p>
+            <span class="cta">View Presentation
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="text-center">
+        <a href="index.html" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to Portfolio
+        </a>
       </div>
     </div>
   </section>
 
-  <footer class="ftco-footer ftco-section text-center">
+  <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2025 Nikhil Khanal | All Rights Reserved</p>
+      &copy; 2025 Nikhil Khanal &nbsp;&mdash;&nbsp; All Rights Reserved.
     </div>
   </footer>
 
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
